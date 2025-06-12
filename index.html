@@ -82,6 +82,20 @@
 
       const pass = document.getElementById("pass").value;
       const msg = document.getElementById("msg");
+if (pass.trim() === "") {
+  alert("Password cannot be empty or just spaces.");
+  document.getElementById("pass").focus();
+  msg.innerHTML=("");
+  return;
+}
+
+if (pass.length < 4) {
+  alert("Password must be at least 4 characters long.");
+  document.getElementById("pass").focus();
+    msg.innerHTML=("");
+
+  return;
+}
 
       if (pass.length >= 8) score++;
       if (pass.match(/[a-z]/)) score++;
