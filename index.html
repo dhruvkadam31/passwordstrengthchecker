@@ -82,12 +82,23 @@
 
       const pass = document.getElementById("pass").value;
       const msg = document.getElementById("msg");
-if (pass.trim() === "") {
-  alert("Password cannot be empty or just spaces.");
-  document.getElementById("pass").focus();
-  msg.innerHTML=("");
-  return;
-}
+if(pass.value === "") {
+                alert("Password cannot be blank");
+                msg.innerHTML = "";
+                pass.focus();
+                return;
+            }
+            
+            if(pass.value.trim() === "") {
+                alert("Name cannot be blank spaces");
+                msg.innerHTML = "";
+                pass.value = "";
+                pass.focus();
+                return;
+            }
+
+            
+
 
 if (pass.length < 4) {
   alert("Password must be at least 4 characters long.");
