@@ -82,14 +82,14 @@
 
       const pass = document.getElementById("pass").value;
       const msg = document.getElementById("msg");
-if(pass.value === "") {
+if(pass === "") {
                 alert("Password cannot be blank");
                 msg.innerHTML = "";
                 pass.focus();
                 return;
             }
             
-            if(pass.value.trim() === "") {
+            if(pass.trim() === "") {
                 alert("Name cannot be blank spaces");
                 msg.innerHTML = "";
                 pass.value = "";
