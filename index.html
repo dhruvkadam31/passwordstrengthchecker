@@ -1,0 +1,106 @@
+<html>
+<head>
+  <title>Password Strength Checker</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      padding: 50px;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"] {
+      font-size: 24px;
+      padding: 12px 20px;
+      width: 90%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      margin-bottom: 20px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #007BFF;
+    }
+
+    input[type="submit"] {
+      font-size: 24px;
+      padding: 12px 30px;
+      border-radius: 8px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 32px;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <h1>Password Strength Checker</h1>
+  <form onsubmit="password(event)">
+    <input type="text" placeholder="Create a Password" id="pass" />
+    <br/>
+    <input type="submit" value="Check the strength" />
+  </form>
+  <h2 id="msg"></h2>
+
+  <script>
+    function password(event) {
+      event.preventDefault();
+      let score = 0;
+
+      const pass = document.getElementById("pass").value;
+      const msg = document.getElementById("msg");
+
+      if (pass.length >= 8) score++;
+      if (pass.match(/[a-z]/)) score++;
+      if (pass.match(/[A-Z]/)) score++;
+      if (pass.match(/[0-9]/)) score++;
+      if (pass.match(/[!@#$%^&*().,\/;'[\]{}]/)) score++;
+
+      if (score < 2) {
+        msg.innerHTML = "Weak Password";
+        document.body.style.backgroundColor = "#ffcccc";
+      } else if (score > 4) {
+        msg.innerHTML = "Strong Password";
+        document.body.style.backgroundColor = "#d4edda";
+      } else {
+        msg.innerHTML = "Medium Password";
+        document.body.style.backgroundColor = "#ffe5b4";
+      }
+
+    }
+  </script>
+</body>
+</html>
